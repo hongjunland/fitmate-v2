@@ -7,9 +7,9 @@ Vue -> React
 Vuex -> Recoil
 
 # 기술스택
-Lanaguage: Typescript
-SPA library: React
-State management library: Recoil
-Server state management library: React-Query
-UI library: Meterial-UI
-CSS-in-JS library: Emotion
+* Lanaguage: Typescript
+* SPA library: React
+* State management library: Recoil
+* Server state management library: React-Query
+* UI library: Meterial-UI
+* CSS-in-JS library: Emotion
