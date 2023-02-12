@@ -2,9 +2,9 @@
 BE는 추후에 (임시로 Firebase로 대체할 예정)
 
 # 기술스택 변경
-Javascript -> Typescript
-Vue -> React
-Vuex -> Recoil
+* Javascript -> Typescript
+* Vue -> React
+* Vuex -> Recoil
 
 # 기술스택
 * Lanaguage: Typescript
