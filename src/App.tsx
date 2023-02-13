@@ -8,11 +8,13 @@ import {
   useSetRecoilState,
 } from "recoil";
 import { getDatabase, ref, set, onValue } from "firebase/database";
-
 function App() {
-  return <RecoilRoot>dsd</RecoilRoot>;
+  return (
+    <RecoilRoot>
+      <div>232</div>
+    </RecoilRoot>
+  );
 }
-
 
 // function TodoList() {
 //   const todoList = useRecoilValue(filteredTodoListState);
