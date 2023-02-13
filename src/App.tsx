@@ -7,14 +7,15 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from "recoil";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import UserInfo from "./UserInfo";
 function App() {
   return (
     <RecoilRoot>
-      <div>232</div>
+      <UserInfo />
     </RecoilRoot>
   );
 }
+
 
 // function TodoList() {
 //   const todoList = useRecoilValue(filteredTodoListState);
