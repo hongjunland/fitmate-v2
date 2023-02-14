@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
+// import {getDatabase} from 'firebase/database'
+
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,6 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
-const database = getDatabase(app);
+const db = getFirestore(app);
+// const database = getDatabase(app);
 
-export { database };
+export { db };

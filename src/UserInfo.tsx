@@ -1,8 +1,9 @@
-import { async } from "@firebase/util";
-import { getDatabase, ref, set, onValue } from "firebase/database";
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { db } from "./firebaseConfig";
+import { ref, set } from "firebase/database";
+
 interface User {
-  userId: number;
   name: string;
   email: string;
   imageUrl: string;
@@ -16,33 +17,48 @@ function UserInfo() {
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserEmail(event.target.value);
   };
-  const onSubmit = async(event: React.MouseEvent<HTMLButtonElement>) => {
-    const userInfo : User = {
-        userId: 123,
-        name: userName,
-        email: userEmail,
-        imageUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K'
+  const onSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const userInfo: User = {
+      name: userName,
+      email: userEmail,
+      imageUrl: "asdasd",
+    };
+    console.log(userInfo);
+    writeUserData(userInfo);
+    setUserName("");
+    setUserEmail("");
+  };
+  const seachAll = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    const querySnapshot = await getDocs(collection(db, "users"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+    });
+    // console.log(querySnapshot);
+  };
+  const writeUserData = async ({ name, email, imageUrl }: User) => {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        name: name,
+        email: email,
+        imageUrl: imageUrl,
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
-    await writeUserData(userInfo);
-  }
+  };
+
   return (
     <div>
       <div>
-        username<input type="text" value={userName} onChange={onChangeName} />
-        email<input type="email" value={userEmail} onChange={onChangeEmail} />
+        username
+        <input type="text" value={userName} onChange={onChangeName} />
+        email
+        <input type="email" value={userEmail} onChange={onChangeEmail} />
         <button onClick={onSubmit}>등록</button>
+        <button onClick={seachAll}>조회</button>
       </div>
     </div>
   );
-}
-
-function writeUserData({ userId, name, email, imageUrl }: User) {
-  const db = getDatabase();
-  set(ref(db, "users/" + userId), {
-    username: name,
-    email: email,
-    profile_picture: imageUrl,
-  });
 }
 
 // const starCountRef = ref(db, 'posts/' + postId + '/starCount');
