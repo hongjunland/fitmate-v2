@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
-type SignupFormState = {
+interface SignupFormState {
   email: string;
+  name: string;
   password: string;
   confirmPassword: string;
 };
@@ -9,13 +12,18 @@ type SignupFormState = {
 export default function SignupPage() {
   const [formState, setFormState] = useState<SignupFormState>({
     email: "",
+    name: "",
     password: "",
     confirmPassword: "",
   });
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: Add sign-up logic using formState.email and formState.password
+    await setDoc(doc(db, "users", "LA"), {
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA"
+    });
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +41,16 @@ export default function SignupPage() {
             type="email"
             name="email"
             value={formState.email}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={formState.name}
             onChange={handleInputChange}
             required
           />

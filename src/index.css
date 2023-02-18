@@ -40,7 +40,7 @@ body {
   line-height: 1.5;
   color: #121212;
 }
-textarea,
+/* textarea,
 input,
 button {
   font-size: 1rem;
@@ -392,4 +392,4 @@ i {
   align-items: center;
   justify-content: center;
   width: 100%;
-}
+} */

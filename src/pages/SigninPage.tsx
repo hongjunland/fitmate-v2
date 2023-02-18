@@ -9,7 +9,34 @@ export default function SigninPage() {
     email: "",
     password: "",
   });
-  return (<div>
-    <div>signinPage</div>
-  </div>)
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
+  };
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
+  return (
+    <div>
+      <h1>Sign Up</h1>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <input
+            type="text"
+            name="email"
+            value={formState.email}
+            onChange={handleInputChange}
+          />
+          <input
+            type="password"
+            name="password"
+            value={formState.password}
+            onChange={handleInputChange}
+          />
+          <button type="submit">Sign in</button>
+        </div>
+      </form>
+    </div>
+  );
 }
