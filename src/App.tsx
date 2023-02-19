@@ -1,10 +1,11 @@
-import { ChangeEvent, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import SigninPage from "./pages/SigninPage";
 import Sidebar from "./components/Sidebar";
+import { auth } from "./firebaseConfig";
+
 function App() {
   return (
     <RecoilRoot>

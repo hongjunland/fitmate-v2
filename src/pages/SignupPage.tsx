@@ -29,7 +29,6 @@ export default function SignupPage() {
       navigate("/")
     })
     .catch((error: ErrorMessage) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       console.error(errorMessage, error);
     });
