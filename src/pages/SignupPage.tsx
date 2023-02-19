@@ -1,28 +1,36 @@
 import { useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig";
-
+import { auth } from "../firebaseConfig";
+import {createUserWithEmailAndPassword} from 'firebase/auth'
+import { useNavigate } from "react-router-dom";
 interface SignupFormState {
   email: string;
-  name: string;
   password: string;
   confirmPassword: string;
-};
+}
+interface ErrorMessage {
+  code: number;
+  message: string;
+}
 
 export default function SignupPage() {
   const [formState, setFormState] = useState<SignupFormState>({
     email: "",
-    name: "",
     password: "",
     confirmPassword: "",
   });
-
-  const handleFormSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate();
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await setDoc(doc(db, "users", "LA"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
+    console.log(formState);
+    createUserWithEmailAndPassword(auth, formState.email, formState.password)
+    .then((userCrential) => {
+      console.log(userCrential);
+      const user = userCrential.user;
+      navigate("/")
+    })
+    .catch((error: ErrorMessage) => {
+      const errorMessage = error.message;
+      console.error(errorMessage, error);
     });
   };
 
@@ -41,16 +49,6 @@ export default function SignupPage() {
             type="email"
             name="email"
             value={formState.email}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formState.name}
             onChange={handleInputChange}
             required
           />
