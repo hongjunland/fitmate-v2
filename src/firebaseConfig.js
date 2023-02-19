@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
 const db = getFirestore(app);
-const auth = getAuth(app);
+const auth = getAuth();
 // const database = getDatabase(app);
 
 export { db, auth };
