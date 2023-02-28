@@ -13,3 +13,4 @@ BE는 추후에 (임시로 Firebase로 대체할 예정)
 * Server state management library: React-Query
 * UI library: Meterial-UI
 * CSS-in-JS library: Emotion
+* DB : Firebase
