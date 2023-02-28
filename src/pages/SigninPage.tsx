@@ -30,7 +30,7 @@ export default function SigninPage() {
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await setPersistence(auth, browserSessionPersistence);
+      // await setPersistence(auth, browserSessionPersistence);
       const userCredential = await signInWithEmailAndPassword(
         auth,
         formState.email,

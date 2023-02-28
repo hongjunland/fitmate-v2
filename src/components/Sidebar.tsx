@@ -25,6 +25,7 @@ export default function Sidebar(): JSX.Element {
           <Link
             to="/"
             onClick={async() => {
+              auth.signOut();
               setAuthStatus((prevState)=>({...prevState, data: null}));
               await signOut(auth);
             }}
