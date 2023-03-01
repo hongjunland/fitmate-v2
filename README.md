@@ -1,5 +1,5 @@
 # fitmate v2 FE
-BE는 추후에 (임시로 Firebase로 대체할 예정)
+BE는 추후에 (임시로 Firebase로 대체)
 
 # 기술스택 변경
 * Javascript -> Typescript
