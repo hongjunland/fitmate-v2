@@ -1,4 +1,3 @@
-import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -24,13 +23,12 @@ export default function Sidebar(): JSX.Element {
         {authStatus.data && (
           <Link
             to="/"
-            onClick={async() => {
-              auth.signOut();
+            onClick={() => {
               setAuthStatus((prevState)=>({...prevState, data: null}));
-              await signOut(auth);
+              auth.signOut();
             }}
           >
-            sign out{" "}
+            sign out
           </Link>
         )}
       </div>

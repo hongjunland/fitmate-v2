@@ -1,9 +1,5 @@
 import {
-  Auth,
-  browserSessionPersistence,
-  setPersistence,
   signInWithEmailAndPassword,
-  User,
 } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebaseConfig";
@@ -31,12 +27,12 @@ export default function SigninPage() {
     event.preventDefault();
     try {
       // await setPersistence(auth, browserSessionPersistence);
-      const userCredential = await signInWithEmailAndPassword(
+      let userCredential = await signInWithEmailAndPassword(
         auth,
         formState.email,
         formState.password
       );
-      const user = userCredential.user;
+      let user = userCredential.user;
       setAuthStatus({ loading: false, error: null, data: user });
       navigate("/");
     } catch (error) {
