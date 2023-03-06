@@ -1,18 +1,16 @@
-import { signOut } from "firebase/auth";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import signedInState from "states/signedInState";
 import { auth } from "../firebaseConfig";
-import authStatusState from "../states/authStatusState";
 
 export default function Sidebar(): JSX.Element {
-  const [authStatus, setAuthStatus] = useRecoilState(authStatusState);
-
+  const [signedIn, setSignedIn] = useRecoilState(signedInState);
   async function handleSignOut() {
     try {
       await auth.signOut();
       console.log("Sign-out successful.");
-      setAuthStatus({ ...authStatus, data: null });
+      setSignedIn(false);
     } catch (error) {
       console.error(error);
     }
@@ -21,9 +19,9 @@ export default function Sidebar(): JSX.Element {
   return (
     <div>
       <Link to="/">home </Link>
-      {!authStatus.data && <Link to="/signin">sign in </Link>}
-      {!authStatus.data && <Link to="/signup">sign up </Link>}
-      {authStatus.data && (
+      {!signedIn && <Link to="/signin">sign in </Link>}
+      {!signedIn && <Link to="/signup">sign up </Link>}
+      {signedIn && (
         <Link to="/" onClick={handleSignOut}>
           sign out
         </Link>

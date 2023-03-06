@@ -3,20 +3,24 @@ import { auth } from "firebaseConfig";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import authStatusState from "states/authStatusState";
+import signedInState from "states/signedInState";
 import Sidebar from "../components/Sidebar";
 import HomePage from "../pages/HomePage";
 import SigninPage from "../pages/SigninPage";
 import SignupPage from "../pages/SignupPage";
 
 export default function Root() {
-  const [authStatus, setAuthStatus] = useRecoilState(authStatusState);
+  const [signedIn, setSignedIn] = useRecoilState(signedInState);
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setAuthStatus({ loading: false, error: false, data: user });
-      console.log(user);
+      if (user != null) {
+        setSignedIn(true);
+      } else {
+        setSignedIn(false);
+      }
     });
-  }, [setAuthStatus]);
+  }, []);
   return (
     <BrowserRouter>
       <div>

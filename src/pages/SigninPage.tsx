@@ -1,23 +1,20 @@
-import {
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import authStatusState from "../states/authStatusState";
+import signedInState from "states/signedInState";
 
 interface SigninFormState {
   email: string;
   password: string;
 }
-// interface AuthState
 export default function SigninPage() {
+  const [signedIn, setSignedIn] = useRecoilState(signedInState);
   const [formState, setFormState] = useState<SigninFormState>({
     email: "",
     password: "",
   });
-  const [authStatus, setAuthStatus] = useRecoilState(authStatusState);
   const navigate = useNavigate();
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -26,18 +23,16 @@ export default function SigninPage() {
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      // await setPersistence(auth, browserSessionPersistence);
       let userCredential = await signInWithEmailAndPassword(
         auth,
         formState.email,
         formState.password
       );
+      setSignedIn(true);
       let user = userCredential.user;
-      setAuthStatus({ loading: false, error: false, data: user });
       navigate("/");
     } catch (error) {
       console.log(error);
-      setAuthStatus({ ...authStatus, error: true });
     }
   };
 
