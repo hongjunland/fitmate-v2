@@ -11,6 +11,7 @@ export default function Sidebar(): JSX.Element {
     setIsOpen(!isOpen);
   }
 
+  
   return (
     <div className={`Sidebar ${isOpen ? "open" : ""}`}>
       <div className="Sidebar__toggle" onClick={handleToggle}>
