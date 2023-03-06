@@ -1,14 +1,14 @@
 import { atom } from "recoil";
-import { Auth, User } from "firebase/auth";
+import { User } from "firebase/auth";
 
 interface AuthStatusProps {
   loading: boolean;
-  error: any;
+  error: boolean;
   data: User | null;
 }
 const authStatusState = atom<AuthStatusProps>({
   key: "authState",
-  default: { loading: true, error: null, data: null },
+  default: { loading: true, error: false, data: null },
 });
 
 export default authStatusState;

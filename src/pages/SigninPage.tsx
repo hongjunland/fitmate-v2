@@ -33,10 +33,11 @@ export default function SigninPage() {
         formState.password
       );
       let user = userCredential.user;
-      setAuthStatus({ loading: false, error: null, data: user });
+      setAuthStatus({ loading: false, error: false, data: user });
       navigate("/");
     } catch (error) {
       console.log(error);
+      setAuthStatus({ ...authStatus, error: true });
     }
   };
 
