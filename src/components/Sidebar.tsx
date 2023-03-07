@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
@@ -18,14 +17,31 @@ export default function Sidebar(): JSX.Element {
 
   return (
     <div>
-      <Link to="/">home </Link>
-      {!signedIn && <Link to="/signin">sign in </Link>}
-      {!signedIn && <Link to="/signup">sign up </Link>}
-      {signedIn && (
-        <Link to="/" onClick={handleSignOut}>
-          sign out
-        </Link>
-      )}
+      <ul>
+        <li>
+          <Link to="/">home </Link>
+        </li>
+        {!signedIn && (
+          <li>
+            <Link to="/signin">sign in </Link>
+          </li>
+        )}
+        {!signedIn && (
+          <li>
+            <Link to="/signup">sign up </Link>
+          </li>
+        )}
+        {signedIn && (
+          <li>
+            <Link to="/" onClick={handleSignOut}>
+              sign out
+            </Link>
+          </li>
+        )}
+        <li>
+          <Link to="/boardList">board</Link>
+        </li>
+      </ul>
     </div>
   );
 }
