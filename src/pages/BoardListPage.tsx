@@ -11,21 +11,21 @@ export default function BoardListPage() {
   const signedIn = useRecoilValue(signedInState);
   const [boardList, setBoardList] = useRecoilState(boardListState);
   const navigate = useNavigate();
-  const getList = async()=>{
+  const getList = async () => {
     const querySnapshot = await getDocs(collection(db, "posts"));
     const data: Board[] = [];
     querySnapshot.forEach((doc) => {
-      const item : Board = {
+      const item: Board = {
         title: doc.data().title,
         content: doc.data().content,
         author: doc.data().author,
         createdAt: doc.data().createdAt,
         id: doc.id,
-      }
+      };
       data.push(item);
     });
     setBoardList(data);
-  }
+  };
   useEffect(() => {
     getList();
   }, []);
@@ -55,14 +55,19 @@ interface BoardListProps {
   boards: Board[];
 }
 function BoardLIst({ boards }: BoardListProps) {
+  const navigate = useNavigate();
+  const handleOnClick = (id: string) => {
+    navigate(`/board/${id}`, {state: id});
+  };
   return (
     <div>
       <ul>
         {boards.map((board) => (
-          <li key={board.id}><Link to={`/board/${board.id}`}>{board.title}</Link></li>
+          <li key={board.id} onClick={() => handleOnClick(board.id)}>
+            {board.title}
+          </li>
         ))}
       </ul>
     </div>
   );
 }
-
