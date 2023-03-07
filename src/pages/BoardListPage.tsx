@@ -1,17 +1,42 @@
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "firebaseConfig";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import boardListState from "states/boardListState";
 import signedInState from "states/signedInState";
+import { Board } from "types/board";
 
 export default function BoardListPage() {
-  const [signedIn, setSignedIn] = useRecoilState(signedInState);
+  const signedIn = useRecoilValue(signedInState);
+  const [boardList, setBoardList] = useRecoilState(boardListState);
   const navigate = useNavigate();
+  const getList = async()=>{
+    const querySnapshot = await getDocs(collection(db, "posts"));
+    const data: Board[] = [];
+    querySnapshot.forEach((doc) => {
+      const item : Board = {
+        title: doc.data().title,
+        content: doc.data().content,
+        author: doc.data().author,
+        createdAt: doc.data().createdAt,
+        id: doc.id,
+      }
+      data.push(item);
+    });
+    setBoardList(data);
+  }
+  useEffect(() => {
+    getList();
+  }, []);
   return (
     <div>
       <div>
         <h2>boardListPage</h2>
       </div>
-      <div></div>
+      <div>
+        <BoardLIst boards={boardList} />
+      </div>
       <div>
         {signedIn && (
           <button
@@ -26,3 +51,18 @@ export default function BoardListPage() {
     </div>
   );
 }
+interface BoardListProps {
+  boards: Board[];
+}
+function BoardLIst({ boards }: BoardListProps) {
+  return (
+    <div>
+      <ul>
+        {boards.map((board) => (
+          <li key={board.id}><Link to={`/board/${board.id}`}>{board.title}</Link></li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+

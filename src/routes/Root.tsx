@@ -1,6 +1,7 @@
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import BoardListPage from "pages/BoardListPage";
+import BoardPage from "pages/BoardPage";
 import { BoardWritePage} from "pages/BoardWritePage";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -31,6 +32,7 @@ export default function Root() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/signin" element={<SigninPage />} />
           <Route path="/boardList" element={<BoardListPage />} />
+          <Route path="/board/:id" element={<BoardPage />} />
           <Route path="/boardWrite" element={<BoardWritePage/>} />
         </Routes>
       </div>
