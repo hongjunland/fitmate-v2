@@ -1,7 +1,7 @@
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import boardListState from "states/boardListState";
 import signedInState from "states/signedInState";

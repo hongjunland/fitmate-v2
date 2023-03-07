@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
-import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 import HomePage from "../pages/HomePage";
 import SigninPage from "../pages/SigninPage";
 import SignupPage from "../pages/SignupPage";
@@ -26,7 +26,7 @@ export default function Root() {
   return (
     <BrowserRouter>
       <div>
-        <Sidebar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignupPage />} />
