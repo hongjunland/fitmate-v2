@@ -2,7 +2,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import boardListState from "states/boardListState";
 import { Board } from "types/board";
 
 export default function BoardPage() {
