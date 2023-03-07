@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
@@ -11,7 +12,17 @@ export default function BoardListPage() {
         <h2>boardListPage</h2>
       </div>
       <div></div>
-      <div>{signedIn && <button onClick={()=>{navigate('/boardWrite')}}>글쓰기</button>}</div>
+      <div>
+        {signedIn && (
+          <button
+            onClick={() => {
+              navigate("/boardWrite");
+            }}
+          >
+            글쓰기
+          </button>
+        )}
+      </div>
     </div>
   );
 }

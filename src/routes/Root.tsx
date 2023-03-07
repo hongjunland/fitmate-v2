@@ -1,8 +1,8 @@
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import BoardListPage from "pages/BoardListPage";
 import { BoardWritePage} from "pages/BoardWritePage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
@@ -13,7 +13,6 @@ import SignupPage from "../pages/SignupPage";
 
 export default function Root() {
   const [signedIn, setSignedIn] = useRecoilState(signedInState);
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user != null) {
@@ -32,7 +31,7 @@ export default function Root() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/signin" element={<SigninPage />} />
           <Route path="/boardList" element={<BoardListPage />} />
-          <Route path="/boardWrite" element={<BoardWritePage />} />
+          <Route path="/boardWrite" element={<BoardWritePage/>} />
         </Routes>
       </div>
     </BrowserRouter>
