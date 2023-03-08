@@ -19,7 +19,7 @@ export default function Navbar(): JSX.Element {
 
   return (
     <Nav>
-      <Container>
+      <Container maxWidth={false}>
         <Box textAlign={"center"}>
           <Logo>
             <Link to="/">Fitmate</Link>
