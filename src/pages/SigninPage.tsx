@@ -4,6 +4,8 @@ import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
+import { Box, Button, Container, Input, Typography } from "@mui/material";
+import styled from "@emotion/styled";
 
 interface SigninFormState {
   email: string;
@@ -37,25 +39,40 @@ export default function SigninPage() {
   };
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <input
-            type="text"
-            name="email"
-            value={formState.email}
-            onChange={handleInputChange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={formState.password}
-            onChange={handleInputChange}
-          />
-          <button type="submit">Sign in</button>
-        </div>
-      </form>
-    </div>
+    <Container>
+      <Box display={"flex"} justifyContent={"center"} alignContent={"center"}>
+        <Box>
+          <Box>
+            <Typography variant={"h3"}>Sign In</Typography>
+          </Box>
+          <Box>
+            <form onSubmit={handleFormSubmit}>
+              <Box>
+                <Input
+                  type="text"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleInputChange}
+                />
+              </Box>
+              <Box>
+                <Input
+                  type="password"
+                  name="password"
+                  value={formState.password}
+                  onChange={handleInputChange}
+                />
+              </Box>
+              <SignButton type="submit">Sign in</SignButton>
+            </form>
+          </Box>
+        </Box>
+      </Box>
+    </Container>
   );
 }
+
+const SignButton = styled(Button)`
+  background-color: #8763FB;
+  color: white;
+`
