@@ -53,6 +53,7 @@ export default function SigninPage() {
                   name="email"
                   value={formState.email}
                   onChange={handleInputChange}
+                  required
                 />
               </Box>
               <Box>
@@ -61,6 +62,7 @@ export default function SigninPage() {
                   name="password"
                   value={formState.password}
                   onChange={handleInputChange}
+                  required
                 />
               </Box>
               <SignButton type="submit">Sign in</SignButton>
