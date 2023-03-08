@@ -1,3 +1,4 @@
+import Footer from "components/Footer";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import BoardListPage from "pages/BoardListPage";
@@ -35,6 +36,7 @@ export default function Root() {
           <Route path="/board/:id" element={<BoardPage />} />
           <Route path="/boardWrite" element={<BoardWritePage/>} />
         </Routes>
+        <Footer/>
       </div>
     </BrowserRouter>
   );
