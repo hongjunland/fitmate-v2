@@ -3,7 +3,7 @@ import Header from "components/base/Header";
 import PageTemplate from "components/base/PageTemplate";
 import { UserMenu } from "components/base/UserMenu";
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <PageTemplate
       header={<Header usermenu={<UserMenu />} navbar={<GlobalNav />} />}

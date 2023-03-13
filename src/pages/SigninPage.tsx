@@ -4,7 +4,7 @@ import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
-import { Box, Button, Input, MenuItem, Typography } from "@mui/material";
+import { Box, Button, Input, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { Container } from "@mui/system";
 import PageTemplate from "components/base/PageTemplate";
@@ -35,7 +35,7 @@ export default function SigninPage() {
         formState.password
       );
       setSignedIn(true);
-      let user = userCredential.user;
+      // let user = userCredential.user;
       navigate("/");
     } catch (error) {
       console.log(error);

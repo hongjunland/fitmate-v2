@@ -1,11 +1,9 @@
-import Footer from "components/base/Footer";
-import Navbar from "components/base/GlobalNav";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import BoardListPage from "pages/BoardListPage";
 import BoardPage from "pages/BoardPage";
 import { BoardWritePage } from "pages/BoardWritePage";
-import HomePage from "pages/HomePage";
+import LandingPage from "pages/LandingPage";
 import SigninPage from "pages/SigninPage";
 import SignupPage from "pages/SignupPage";
 import { useEffect } from "react";
@@ -27,7 +25,7 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/boardList" element={<BoardListPage />} />
