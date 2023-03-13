@@ -26,7 +26,7 @@ export default function App() {
   }, []);
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
@@ -35,7 +35,7 @@ export default function App() {
         <Route path="/board/:id" element={<BoardPage />} />
         <Route path="/boardWrite" element={<BoardWritePage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

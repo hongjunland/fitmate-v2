@@ -1,16 +1,18 @@
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
+import Footer from "./Footer";
 
 interface Props {
   header: ReactNode;
   children: ReactNode;
 }
 
-function PageTemplate({ header, children }: Props) {
+export default function PageTemplate({ header, children }: Props) {
   return (
     <Container>
       {header}
       <main>{children}</main>
+      <Footer/>
     </Container>
   );
 }
