@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
-import { auth } from "../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 import styled from "@emotion/styled";
 import { Box, Stack } from "@mui/material";
 import { Container } from "@mui/system";
