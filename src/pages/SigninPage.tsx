@@ -4,8 +4,9 @@ import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import signedInState from "states/signedInState";
-import { Box, Button, Container, Input, Typography } from "@mui/material";
+import { Box, Button, Input, Typography } from "@mui/material";
 import styled from "@emotion/styled";
+import { Container } from "@mui/system";
 
 interface SigninFormState {
   email: string;
@@ -40,41 +41,54 @@ export default function SigninPage() {
 
   return (
     <Container>
-      <Box display={"flex"} justifyContent={"center"} alignContent={"center"}>
-        <Box>
-          <Box>
-            <Typography variant={"h3"}>Sign In</Typography>
-          </Box>
-          <Box>
-            <form onSubmit={handleFormSubmit}>
-              <Box>
-                <Input
-                  type="text"
-                  name="email"
-                  value={formState.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </Box>
-              <Box>
-                <Input
-                  type="password"
-                  name="password"
-                  value={formState.password}
-                  onChange={handleInputChange}
-                  required
-                />
-              </Box>
-              <SignButton type="submit">Sign in</SignButton>
-            </form>
+      <Main>
+        <Box display={"flex"} justifyContent={"center"} alignContent={"center"}>
+          <Box width={"30%"}>
+            <Box margin={"1rem"}>
+              <Typography
+                variant={"h3"}
+                fontFamily={"LeferiPoint-WhiteObliqueA"}
+              >
+                Sign In
+              </Typography>
+            </Box>
+            <Box margin={"1rem"}>
+              <form onSubmit={handleFormSubmit}>
+                <Box marginTop={"2rem"}>
+                  <Input
+                    fullWidth={true}
+                    type="text"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </Box>
+                <Box>
+                  <Input
+                    fullWidth={true}
+                    type="password"
+                    name="password"
+                    value={formState.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </Box>
+                <Box margin={"1rem"} marginTop={"2rem"}>
+                  <SignButton type="submit">Sign in</SignButton>
+                </Box>
+              </form>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      </Main>
     </Container>
   );
 }
-
+const Main = styled.main`
+  font-family: "LeferiPoint-WhiteObliqueA";
+`;
 const SignButton = styled(Button)`
-  background-color: #8763FB;
+  background-color: #8763fb;
   color: white;
-`
+`;
