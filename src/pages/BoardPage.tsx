@@ -1,3 +1,7 @@
+import GlobalNav from "components/base/GlobalNav";
+import Header from "components/base/Header";
+import PageTemplate from "components/base/PageTemplate";
+import { UserMenu } from "components/base/UserMenu";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { useEffect, useState } from "react";
@@ -26,7 +30,8 @@ export default function BoardPage() {
     getBoard();
   }, []);
   return (
-    <div>
+    <PageTemplate
+    header={<Header usermenu={<UserMenu />} navbar={<GlobalNav />} />}>
       <div>
         <p>제목: {board?.title}</p>
         <p>작성자: {board?.author}</p>
@@ -37,6 +42,6 @@ export default function BoardPage() {
       <p>{board?.content}</p>
       <hr />
       <p>{boardId}</p>
-    </div>
+    </PageTemplate>
   );
 }

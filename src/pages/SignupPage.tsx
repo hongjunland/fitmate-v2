@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { auth } from "../firebaseConfig";
-import {createUserWithEmailAndPassword} from 'firebase/auth'
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import PageTemplate from "components/base/PageTemplate";
+import Header from "components/base/Header";
+import { UserMenu } from "components/base/UserMenu";
+import GlobalNav from "components/base/GlobalNav";
 interface SignupFormState {
   email: string;
   password: string;
@@ -23,15 +27,15 @@ export default function SignupPage() {
     event.preventDefault();
     console.log(formState);
     createUserWithEmailAndPassword(auth, formState.email, formState.password)
-    .then((userCrential) => {
-      console.log(userCrential);
-      const user = userCrential.user;
-      navigate("/")
-    })
-    .catch((error: ErrorMessage) => {
-      const errorMessage = error.message;
-      console.error(errorMessage, error);
-    });
+      .then((userCrential) => {
+        console.log(userCrential);
+        const user = userCrential.user;
+        navigate("/");
+      })
+      .catch((error: ErrorMessage) => {
+        const errorMessage = error.message;
+        console.error(errorMessage, error);
+      });
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +44,9 @@ export default function SignupPage() {
   };
 
   return (
-    <div id="signup-page">
+    <PageTemplate
+      header={<Header usermenu={<UserMenu />} navbar={<GlobalNav />} />}
+    >
       <h1>Sign Up</h1>
       <form onSubmit={handleFormSubmit}>
         <label>
@@ -75,6 +81,6 @@ export default function SignupPage() {
         </label>
         <button type="submit">Sign Up</button>
       </form>
-    </div>
+    </PageTemplate>
   );
 }

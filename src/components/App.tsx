@@ -1,5 +1,5 @@
 import Footer from "components/base/Footer";
-import Navbar from "components/base/Navbar";
+import Navbar from "components/base/GlobalNav";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import BoardListPage from "pages/BoardListPage";
@@ -26,7 +26,6 @@ export default function App() {
   }, []);
   return (
     <>
-      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
@@ -35,7 +34,6 @@ export default function App() {
         <Route path="/board/:id" element={<BoardPage />} />
         <Route path="/boardWrite" element={<BoardWritePage />} />
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

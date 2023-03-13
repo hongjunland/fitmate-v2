@@ -1,3 +1,7 @@
+import GlobalNav from "components/base/GlobalNav";
+import Header from "components/base/Header";
+import PageTemplate from "components/base/PageTemplate";
+import { UserMenu } from "components/base/UserMenu";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { useEffect } from "react";
@@ -30,7 +34,9 @@ export default function BoardListPage() {
     getList();
   }, []);
   return (
-    <div>
+    <PageTemplate
+      header={<Header usermenu={<UserMenu />} navbar={<GlobalNav />} />}
+    >
       <div>
         <h2>boardListPage</h2>
       </div>
@@ -48,7 +54,7 @@ export default function BoardListPage() {
           </button>
         )}
       </div>
-    </div>
+    </PageTemplate>
   );
 }
 interface BoardListProps {
@@ -57,7 +63,7 @@ interface BoardListProps {
 function BoardLIst({ boards }: BoardListProps) {
   const navigate = useNavigate();
   const handleOnClick = (id: string) => {
-    navigate(`/board/${id}`, {state: id});
+    navigate(`/board/${id}`, { state: id });
   };
   return (
     <div>

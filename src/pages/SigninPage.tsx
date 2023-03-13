@@ -9,7 +9,7 @@ import styled from "@emotion/styled";
 import { Container } from "@mui/system";
 import PageTemplate from "components/base/PageTemplate";
 import Header from "components/base/Header";
-import Navbar from "components/base/Navbar";
+import GlobalNav from "components/base/GlobalNav";
 import { UserMenu } from "components/base/UserMenu";
 interface SigninFormState {
   email: string;
@@ -44,7 +44,7 @@ export default function SigninPage() {
 
   return (
     <PageTemplate
-      header={<Header usermenu={<UserMenu />} navbar={<Navbar />} />}
+      header={<Header usermenu={<UserMenu />} navbar={<GlobalNav />} />}
     >
       <Container>
         <Main>

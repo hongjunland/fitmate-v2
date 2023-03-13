@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { Box, Container, Typography } from "@mui/material";
+import { Container} from "@mui/material";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import Logo from "./Logo";
 interface Props {
   navbar: ReactNode;
   usermenu: ReactNode;
@@ -9,38 +9,26 @@ interface Props {
 
 export default function Header({ usermenu, navbar }: Props) {
   return (
-    <header>
-      <HeaderContainer maxWidth={false}>
-        <Box>
+    <HeaderContainer>
+      <Container>
+        <Wrapper>
           <Logo />
-        </Box>
-        {navbar}
-        {usermenu}
-      </HeaderContainer>
-    </header>
+          {navbar}
+          {usermenu}
+        </Wrapper>
+      </Container>
+    </HeaderContainer>
   );
 }
-const LogoText = styled(Typography)``;
-const HeaderContainer = styled(Container)`
+const HeaderContainer = styled.header`
   background-color: rgb(102, 103, 171);
-  font-family: "LeferiPoint-WhiteObliqueA";
-  display: flex;
-  a {
-    font-weight: bold;
+  a, h5 {
     color: #d7dee6;
-    text-decoration: none;
-  }
-  h5 {
+    font-weight: bold;
     font-family: "LeferiPoint-WhiteObliqueA";
   }
 `;
-
-function Logo() {
-  return (
-    <>
-      <Link to="/">
-        <LogoText variant="h5">Fitmate</LogoText>
-      </Link>
-    </>
-  );
-}
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`

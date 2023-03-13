@@ -16,26 +16,28 @@ export function UserMenu() {
     }
   }
   return (
-    <Stack direction="row" spacing={3}>
+    <div>
       <ul>
-        {!signedIn && (
-          <li>
-            <Link to="/signin">sign in </Link>
-          </li>
-        )}
-        {!signedIn && (
-          <li>
-            <Link to="/signup">sign up </Link>
-          </li>
-        )}
-        {signedIn && (
-          <li>
-            <Link to="/" onClick={handleSignOut}>
-              sign out
-            </Link>
-          </li>
-        )}
+        <Stack direction="row" spacing={3}>
+          {!signedIn && (
+            <li>
+              <Link to="/signin">sign in </Link>
+            </li>
+          )}
+          {!signedIn && (
+            <li>
+              <Link to="/signup">sign up </Link>
+            </li>
+          )}
+          {signedIn && (
+            <li>
+              <Link to="/" onClick={handleSignOut}>
+                sign out
+              </Link>
+            </li>
+          )}
+        </Stack>
       </ul>
-    </Stack>
+    </div>
   );
 }

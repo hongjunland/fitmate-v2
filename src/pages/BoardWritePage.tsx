@@ -1,3 +1,7 @@
+import GlobalNav from "components/base/GlobalNav";
+import Header from "components/base/Header";
+import PageTemplate from "components/base/PageTemplate";
+import { UserMenu } from "components/base/UserMenu";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { auth, db } from "firebaseConfig";
@@ -42,7 +46,9 @@ export function BoardWritePage() {
     navigate("/boardList");
   };
   return (
-    <div>
+    <PageTemplate
+      header={<Header usermenu={<UserMenu />} navbar={<GlobalNav />} />}
+    >
       <div>
         <h3>게시판 쓰기</h3>
       </div>
@@ -64,6 +70,6 @@ export function BoardWritePage() {
         </div>
         <button type="submit">쓰기</button>
       </form>
-    </div>
+    </PageTemplate>
   );
 }
