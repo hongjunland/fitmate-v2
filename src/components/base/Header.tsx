@@ -22,6 +22,10 @@ export default function Header({ usermenu, navbar }: Props) {
 }
 const HeaderContainer = styled.header`
   background-color: rgb(102, 103, 171);
+  position: fixed;
+  width: 100%;
+  min-width: 320px;
+  z-index: 9999;
   a, h5 {
     color: #d7dee6;
     font-weight: bold;

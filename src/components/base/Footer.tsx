@@ -42,11 +42,11 @@ const Container = styled.footer`
   bottom: 0px;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  position: absolute;
+  position: relative;
   background-color: #cbc7cf;
-  align-content: center;
-  font-family: "LeferiPoint-WhiteObliqueA";
   color: #6d6d6d;
+  z-index: 1;
+  overflow: hidden;
 `;
 const FooterImg = styled.img`
   display: flex;
