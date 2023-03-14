@@ -11,11 +11,15 @@ export default function PageTemplate({ header, children }: Props) {
   return (
     <Container>
       {header}
-      <main>{children}</main>
+      <Main>{children}</Main>
       <Footer/>
     </Container>
   );
 }
 const Container = styled.div`
   
+`;
+
+const Main = styled.main`
+  padding-top: 60px;
 `;

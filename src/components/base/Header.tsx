@@ -26,6 +26,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   min-width: 320px;
   z-index: 9999;
+  height: 60px;
   a, h5 {
     color: #d7dee6;
     font-weight: bold;
