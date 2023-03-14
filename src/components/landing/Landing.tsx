@@ -5,8 +5,16 @@ export default function Landing() {
   return (
     <Section>
       <LandingSectionUnit
-        linkSrc="/"
-        imgSrc="https://www.apple.com/kr/iphone-14-pro/"
+        linkSrc="/board"
+        imgSrc="https://www.apple.com/kr/home/ay/images/heroes/iphone-14-pro/hero_iphone14pro_spring__9xo85pm6sbmm_largetall_2x.jpg"
+      />
+      <LandingSectionUnit
+        linkSrc="/board"
+        imgSrc="https://www.apple.com/kr/home/ay/images/heroes/iphone-14-pro/hero_iphone14pro_spring__9xo85pm6sbmm_largetall_2x.jpg"
+      />
+      <LandingSectionUnit
+        linkSrc="/board"
+        imgSrc="https://www.apple.com/kr/home/ay/images/heroes/iphone-14-pro/hero_iphone14pro_spring__9xo85pm6sbmm_largetall_2x.jpg"
       />
     </Section>
   );
@@ -20,7 +28,7 @@ interface LandingSectionUnitProps {
 function LandingSectionUnit({ imgSrc, linkSrc }: LandingSectionUnitProps) {
   return (
     <Wrapper>
-      <UnitLink to={linkSrc}>&nbsp</UnitLink>
+      <UnitLink to={linkSrc}></UnitLink>
       <UnitCopyWrapper />
       <UnitImageWrapper src={imgSrc} />
     </Wrapper>
@@ -28,29 +36,29 @@ function LandingSectionUnit({ imgSrc, linkSrc }: LandingSectionUnitProps) {
 }
 
 const Wrapper = styled.div`
-  display: relative;
-  height: 382px;
+  height: 692px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 const UnitLink = styled(Link)`
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: inherit;
+  height: 100%;
   z-index: 3;
 `;
 
 interface UnitCopyWrapperProps {}
 function UnitCopyWrapper({}: UnitCopyWrapperProps) {
-  return <UnitCopyWrapperWrapper></UnitCopyWrapperWrapper>;
+  return <UnitCopyWrapperWrapper>UnitCopyWrapper</UnitCopyWrapperWrapper>;
 }
 
 const UnitCopyWrapperWrapper = styled.div`
   padding-top: 55px;
   text-align: center;
   position: relative;
-  flex-grow: 0;
   z-index: 4;
   pointer-events: none;
 `;
@@ -61,26 +69,25 @@ interface UnitImageWrapperProps {
 function UnitImageWrapper({ src }: UnitImageWrapperProps) {
   return (
     <UnitImageWrapperWrapper>
-      <Figure src={src} >
-        sds
-      </Figure>
+      <Figure src={src}>UnitImageWrapper</Figure>
     </UnitImageWrapperWrapper>
   );
 }
 
 const UnitImageWrapperWrapper = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
+  overflow: visible;
+  z-index: 1;
   height: 100%;
   width: 100%;
-  z-index: 1;
 `;
 
 const Figure = styled.figure<{ src?: string }>`
-  /* background-image: url(${(props) => (props.src ? props.src : DefaultImg)}); */
-  background-image: black;
-  width: 1800px;
-  height: 382px;
-  background-size: 1800px 382px;
+  background-image: url(${(props) => (props.src ? props.src : DefaultImg)});
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  z-index: 1;
+  position: absolute;
+  margin: 0;
 `;
