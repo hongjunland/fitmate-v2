@@ -4,6 +4,7 @@ import BoardListPage from "pages/BoardListPage";
 import BoardPage from "pages/BoardPage";
 import { BoardWritePage } from "pages/BoardWritePage";
 import LandingPage from "pages/LandingPage";
+import MyPage from "pages/MyPage";
 import SigninPage from "pages/SigninPage";
 import SignupPage from "pages/SignupPage";
 import { useEffect } from "react";
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/boardList" element={<BoardListPage />} />
         <Route path="/board/:id" element={<BoardPage />} />
         <Route path="/boardWrite" element={<BoardWritePage />} />
+        <Route path="/my" element={<MyPage />} />
       </Routes>
     </>
   );
