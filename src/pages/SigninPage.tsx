@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
@@ -11,11 +11,15 @@ import PageTemplate from "components/base/PageTemplate";
 import Header from "components/base/Header";
 import GlobalNav from "components/base/GlobalNav";
 import { UserMenu } from "components/base/UserMenu";
+import { GoogleAuthProvider } from "firebase/auth";
+import GoogleIcon from "@mui/icons-material/Google";
+
 interface SigninFormState {
   email: string;
   password: string;
 }
 export default function SigninPage() {
+  const provider = new GoogleAuthProvider();
   const [signedIn, setSignedIn] = useRecoilState(signedInState);
   const [formState, setFormState] = useState<SigninFormState>({
     email: "",
@@ -41,65 +45,92 @@ export default function SigninPage() {
       console.log(error);
     }
   };
-
+  const handleSigninWithGoogle = async (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user = result.user;
+      console.log(user);
+    } catch (error: any) {
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log(error);
+    }
+  };
   return (
     <PageTemplate
       header={<Header usermenu={<UserMenu />} navbar={<GlobalNav />} />}
     >
       <Container>
-        <Main>
-          <Box
-            display={"flex"}
-            justifyContent={"center"}
-            alignContent={"center"}
-          >
-            <Box width={"30%"}>
-              <Box margin={"1rem"}>
-                <Typography
-                  variant={"h3"}
-                  fontFamily={"LeferiPoint-WhiteObliqueA"}
-                >
-                  Sign In
-                </Typography>
-              </Box>
-              <Box margin={"1rem"}>
-                <form onSubmit={handleFormSubmit}>
-                  <Box marginTop={"2rem"}>
-                    <Input
-                      fullWidth={true}
-                      type="text"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </Box>
-                  <Box>
-                    <Input
-                      fullWidth={true}
-                      type="password"
-                      name="password"
-                      value={formState.password}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </Box>
-                  <Box margin={"1rem"} marginTop={"2rem"}>
-                    <SignButton type="submit">Sign in</SignButton>
-                  </Box>
-                </form>
+        <Wrapper>
+          <Box width={"30%"}>
+            <Box margin={"1rem"}>
+              <Typography variant={"h3"} textAlign="center">
+                Sign In
+              </Typography>
+            </Box>
+            <Box margin={"1rem"}>
+              <form onSubmit={handleFormSubmit}>
+                <Box marginTop={"2rem"}>
+                  <Input
+                    fullWidth={true}
+                    type="text"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </Box>
+                <Box>
+                  <Input
+                    fullWidth={true}
+                    type="password"
+                    name="password"
+                    value={formState.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </Box>
+                <Box marginTop={"2rem"}>
+                  <SignButton type="submit">Sign in</SignButton>
+                </Box>
+              </form>
+              <Box marginTop={"0.5rem"}>
+                <GoogleButton type="button">
+                  <GoogleIcon />
+                  &nbsp; Sign in with Google
+                </GoogleButton>
               </Box>
             </Box>
           </Box>
-        </Main>
+        </Wrapper>
       </Container>
     </PageTemplate>
   );
 }
-const Main = styled.main`
-  font-family: "LeferiPoint-WhiteObliqueA";
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10% 5% 20% 5%;
+  h3 {
+    font-family: "LeferiPoint-WhiteObliqueA";
+  }
+  button {
+    text-transform: none;
+  }
 `;
 const SignButton = styled(Button)`
   background-color: #8763fb;
   color: white;
+  width: 100%;
+`;
+const GoogleButton = styled(Button)`
+  width: 100%;
+  font-weight: bold;
+  background-color: white;
+  border: #b9b9b9 solid 1px;
+  color: #000;
 `;
