@@ -7,7 +7,7 @@ export default function StylistUnit() {
     <Wrapper>
         <div>
           <HeadLine variant="h2">스타일리스트</HeadLine>
-          <SubHeadLine variant="h4">
+          <SubHeadLine variant="h5">
             어울리는 코디를 찾고 싶은 모든 이들에게
           </SubHeadLine>
           <UnitLink to="/stylist">더 알아보기 {">"}</UnitLink>
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   pointer-events: none;
   color: #000;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   h1,
   h2,
   h3,

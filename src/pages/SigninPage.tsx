@@ -54,6 +54,7 @@ export default function SigninPage() {
       const token = credential?.accessToken;
       const user = result.user;
       console.log(user);
+      navigate('/');
     } catch (error: any) {
       const credential = GoogleAuthProvider.credentialFromError(error);
       console.log(error);
@@ -98,8 +99,8 @@ export default function SigninPage() {
                 </Box>
               </form>
               <Box marginTop={"0.5rem"}>
-                <GoogleButton type="button">
-                  <GoogleIcon />
+                <GoogleButton type="button" onClick={handleSigninWithGoogle}>
+                  <GoogleIcon/>
                   &nbsp; Sign in with Google
                 </GoogleButton>
               </Box>
