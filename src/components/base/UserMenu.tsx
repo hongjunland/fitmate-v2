@@ -36,6 +36,11 @@ export function UserMenu() {
               </Link>
             </li>
             <li>
+              <Link to="/portfolio">
+                My Portfolio
+              </Link>
+            </li>
+            <li>
               <Link to="/" onClick={handleSignOut}>
                 sign out
               </Link>
