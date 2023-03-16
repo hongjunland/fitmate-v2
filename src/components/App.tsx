@@ -35,7 +35,7 @@ export default function App() {
         <Route path="/board/:id" element={<BoardPage />} />
         <Route path="/boardWrite" element={<BoardWritePage />} />
         <Route path="/my" element={<MyPage />} />
-        <Route path="/portfoilo" element={<PortfolioPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
         {/* error page */}
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
