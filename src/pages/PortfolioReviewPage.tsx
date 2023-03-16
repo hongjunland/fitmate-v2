@@ -2,6 +2,7 @@ import GlobalNav from "components/base/GlobalNav";
 import Header from "components/base/Header";
 import PageTemplate from "components/base/PageTemplate";
 import { UserMenu } from "components/base/UserMenu";
+import PortfolioReview from "components/portfolio/PortfolioReview";
 import PortfolioTemplate from "components/portfolio/PortfolioTemplate";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
@@ -16,7 +17,9 @@ export default function PortfolioReviewPage() {
     <PageTemplate
       header={<Header navbar={<GlobalNav />} usermenu={<UserMenu />} />}
     >
-      <PortfolioTemplate>PortfolioReviewPage</PortfolioTemplate>
+      <PortfolioTemplate>
+        <PortfolioReview />
+      </PortfolioTemplate>
     </PageTemplate>
   );
 }

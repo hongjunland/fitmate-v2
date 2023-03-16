@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { Icon, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 
-export default function Profile() {
+export default function PortfolioProfile() {
   return (
     <>
       <ImageWrapper>

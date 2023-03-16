@@ -1,7 +1,7 @@
 interface Props {
   styleList: any;
 }
-export default function PortfolioStyleList({ styleList }: Props) {
+export default function StyleList({ styleList }: Props) {
   return (
     <>
       {styleList.map((style: any) => (

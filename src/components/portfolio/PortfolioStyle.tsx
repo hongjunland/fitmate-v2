@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { styleList } from "components/dummy/portfolio";
-import PortfolioStyleList from "./PortpolioStyleList";
+import StyleList from "./StyleList";
 export default function PortfolioStyle() {
   return (
     <Container>
       <StyleListWrapper>
-        <PortfolioStyleList styleList={styleList}/>
+        <StyleList styleList={styleList}/>
       </StyleListWrapper>
     </Container>
   );

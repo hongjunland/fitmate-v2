@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
 import PortfolioMenu from "./PortfolioMenu";
-import Profile from "./Profile";
+import PortfolioProfile from "./PortfolioProfile";
 
 interface Props {
   children: ReactNode;
@@ -10,7 +10,7 @@ export default function PortfolioTemplate({children}: Props) {
   return (
     <Container>
       <ProfileSection>
-        <Profile />
+        <PortfolioProfile />
       </ProfileSection>
       <ContentSection>
         <PortfolioMenu />

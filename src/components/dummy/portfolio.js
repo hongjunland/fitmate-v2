@@ -19,7 +19,7 @@ export const styleList = [
     {thumbnail: 'https://image.msscdn.net/images/goods_img/20220124/2322837/2322837_1_500.jpg' , id:17},
 ]; 
 
-export const reviews = [{
+export const reviewList = [{
     "id": 1,
     "nickname": "Canis lupus",
     "content": "Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum.",
