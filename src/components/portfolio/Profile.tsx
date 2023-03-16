@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { Icon, Typography } from "@mui/material";
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import ShareIcon from '@mui/icons-material/Share';
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ShareIcon from "@mui/icons-material/Share";
 
 export default function Profile() {
   return (
-    <Section>
+    <>
       <ImageWrapper>
         <Image
           src="https://firebasestorage.googleapis.com/v0/b/fitmate-v2-50236.appspot.com/o/default_profile.jpg?alt=media&token=e9ff6290-2031-4a6e-b2cc-fcab186da8c3"
@@ -14,21 +14,22 @@ export default function Profile() {
         />
       </ImageWrapper>
       <ContentWrapper>
-        <Typography variant="h3" textAlign="center">홍길동</Typography>
+        <Typography variant="h3" textAlign="center">
+          홍길동
+        </Typography>
         <Typography variant="h5" textAlign="center">
           안녕하세요! 스타일리스트 홍길동입니다.
         </Typography>
       </ContentWrapper>
       <ButtonWrapper>
-        <StarBorderIcon/>
-        <ChatBubbleOutlineIcon/>
-        <ShareIcon/>
+        <StarBorderIcon />
+        <ChatBubbleOutlineIcon />
+        <ShareIcon />
       </ButtonWrapper>
-    </Section>
+    </>
   );
 }
 
-const Section = styled.section``;
 const ImageWrapper = styled.div``;
 
 const Image = styled.img`
@@ -48,10 +49,10 @@ const ContentWrapper = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    padding: 5%;
-    svg{
-        flex-grow: 1;
-    }
+  display: flex;
+  flex-direction: row;
+  padding: 5%;
+  svg {
+    flex-grow: 1;
+  }
 `;
