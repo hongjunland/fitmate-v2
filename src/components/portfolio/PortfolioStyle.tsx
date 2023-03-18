@@ -22,6 +22,7 @@ const StyleListWrapper = styled.div`
     height: 100%;
   }
   figure{
+    
     width: 125px;
     height: 150px;
   }
