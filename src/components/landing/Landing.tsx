@@ -4,6 +4,7 @@ import StylebookUnit from "./contents/StylebookUnit";
 import StylistUnit from "./contents/StylistUnit";
 import LandingUnit from "./LandingUnit";
 
+
 export default function Landing() {
   return (
     <Section>
